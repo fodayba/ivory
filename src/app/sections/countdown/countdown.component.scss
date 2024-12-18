@@ -1,0 +1,52 @@
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+:host {
+    display: block;
+
+    .text-center > div {
+        animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        opacity: 0;
+    }
+
+    @for $i from 1 through 4 {
+        .grid > div:nth-child(#{$i}) {
+            animation-delay: #{$i * 0.15}s;
+        }
+    }
+
+    // Pulse animation for seconds
+    .grid > div:last-child .bg-white\/10 {
+        animation: pulse 1s ease-in-out infinite;
+    }
+
+    // Hover effect for countdown boxes
+    .bg-white\/10 {
+        transition: transform 0.3s ease, background-color 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+    }
+}

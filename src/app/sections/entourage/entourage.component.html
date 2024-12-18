@@ -1,0 +1,56 @@
+<section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+        <!-- Section Title -->
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-3xl md:text-4xl text-primary-900 mb-4">The Wedding Party</h2>
+            <div class="w-20 h-0.5 bg-primary-300 mx-auto"></div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="max-w-7xl mx-auto">
+            <!-- Tab Buttons -->
+            <div class="flex justify-center space-x-8 mb-16">
+                <button (click)="activeTab = 'bridesmaids'" 
+                        [class]="'px-8 py-3 text-lg font-serif transition-all duration-300 border-b-2 ' + 
+                                (activeTab === 'bridesmaids' ? 'border-primary-500 text-primary-900' : 'border-transparent text-primary-400 hover:text-primary-600')">
+                    Bridesmaids
+                </button>
+                <button (click)="activeTab = 'groomsmen'" 
+                        [class]="'px-8 py-3 text-lg font-serif transition-all duration-300 border-b-2 ' + 
+                                (activeTab === 'groomsmen' ? 'border-primary-500 text-primary-900' : 'border-transparent text-primary-400 hover:text-primary-600')">
+                    Groomsmen
+                </button>
+            </div>
+
+            <!-- Bridesmaids Tab -->
+            <div *ngIf="activeTab === 'bridesmaids'" class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div *ngFor="let member of bridesmaids" class="text-center group">
+                    <div class="relative mb-4 aspect-square overflow-hidden rounded-lg shadow-md">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <img [src]="member.image" [alt]="member.name" 
+                             class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <h3 class="font-serif text-lg text-primary-900 mb-1 line-clamp-2 min-h-[3.5rem]">{{member.name}}</h3>
+                        <p class="text-sm text-primary-600 italic">{{member.role}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Groomsmen Tab -->
+            <div *ngIf="activeTab === 'groomsmen'" class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div *ngFor="let member of groomsmen" class="text-center group">
+                    <div class="relative mb-4 aspect-square overflow-hidden rounded-lg shadow-md">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <img [src]="member.image" [alt]="member.name" 
+                             class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="px-2">
+                        <h3 class="font-serif text-lg text-primary-900 mb-1 line-clamp-2 min-h-[3.5rem]">{{member.name}}</h3>
+                        <p class="text-sm text-primary-600 italic">{{member.role}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

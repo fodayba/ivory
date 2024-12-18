@@ -1,0 +1,54 @@
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-5px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtle-zoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+:host {
+    display: block;
+    
+    .animate-fade-in {
+        opacity: 0;
+        animation: fadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    .animate-slide-up {
+        opacity: 0;
+        animation: slideUp 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    
+    .animate-fade-in-delay {
+        opacity: 0;
+        animation: fadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
+    }
+
+    .bg-\[url\(\'\/assets\/images\/hero-bg\.JPG\'\)\] {
+        animation: subtle-zoom 30s ease-out forwards;
+        transform-origin: center;
+    }
+}

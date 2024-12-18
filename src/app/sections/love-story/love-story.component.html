@@ -1,0 +1,55 @@
+<!-- Love Story Section -->
+<section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+        <!-- Title -->
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-3xl md:text-4xl text-primary-900 mb-4">Our Love Story</h2>
+            <div class="w-20 h-0.5 bg-primary-300 mx-auto"></div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="flex justify-center space-x-6 mb-16">
+            <button (click)="activeTab = 'met'"
+                    [class.border-primary-500]="activeTab === 'met'"
+                    [class.text-primary-900]="activeTab === 'met'"
+                    class="px-6 py-3 text-lg font-serif border-b-2 hover:text-primary-600">
+                How We Met
+            </button>
+            <button (click)="activeTab = 'date'"
+                    [class.border-primary-500]="activeTab === 'date'"
+                    [class.text-primary-900]="activeTab === 'date'"
+                    class="px-6 py-3 text-lg font-serif border-b-2 hover:text-primary-600">
+                Our First Date
+            </button>
+            <button (click)="activeTab = 'proposal'"
+                    [class.border-primary-500]="activeTab === 'proposal'"
+                    [class.text-primary-900]="activeTab === 'proposal'"
+                    class="px-6 py-3 text-lg font-serif border-b-2 hover:text-primary-600">
+                Marriage Proposal
+            </button>
+        </div>
+
+        <!-- Content -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Image -->
+            <div class="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
+                <img [src]="storyMoments[activeTab].image" 
+                     [alt]="storyMoments[activeTab].title"
+                     class="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105">
+            </div>
+
+            <!-- Text -->
+            <div class="flex flex-col justify-center">
+                <div class="max-w-xl">
+                    <h3 class="font-serif text-2xl md:text-3xl text-primary-900 mb-6">
+                        {{storyMoments[activeTab].title}}
+                    </h3>
+                    <p class="text-lg text-primary-700 leading-relaxed">
+                        {{storyMoments[activeTab].content}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
