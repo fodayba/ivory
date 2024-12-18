@@ -4,69 +4,49 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { EmailService } from '../../services/email.service';
 
 @Component({
-  selector: 'app-rsvp',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './rsvp.component.html',
-  styleUrl: './rsvp.component.scss'
+    selector: 'app-rsvp',
+    templateUrl: './rsvp.component.html',
+    styleUrls: ['./rsvp.component.scss'],
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule]
 })
 export class RsvpComponent implements OnInit {
-  rsvpForm: FormGroup;
-  isSubmitting = false;
-  submitSuccess = false;
-  submitError = false;
+    rsvpForm: FormGroup;
+    isSubmitting = false;
+    showSuccess = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private emailService: EmailService
-  ) {
-    this.rsvpForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern('^[0-9+\\-\\s]*$')]],
-      attending: [null, Validators.required],
-      plusOne: [false],
-      message: ['']
-    });
-  }
-
-  ngOnInit(): void {
-    // Watch for attending value changes to reset plusOne when not attending
-    this.rsvpForm.get('attending')?.valueChanges.subscribe(attending => {
-      if (!attending) {
-        this.rsvpForm.patchValue({ plusOne: false });
-      }
-    });
-  }
-
-  async onSubmit(): Promise<void> {
-    if (this.rsvpForm.valid && !this.isSubmitting) {
-      this.isSubmitting = true;
-      this.submitSuccess = false;
-      this.submitError = false;
-
-      try {
-        await this.emailService.sendRSVP(this.rsvpForm.value);
-        this.submitSuccess = true;
-        this.rsvpForm.reset();
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          this.submitSuccess = false;
-        }, 5000);
-
-      } catch (error) {
-        console.error('RSVP submission failed:', error);
-        this.submitError = true;
-        
-        // Reset error message after 5 seconds
-        setTimeout(() => {
-          this.submitError = false;
-        }, 5000);
-
-      } finally {
-        this.isSubmitting = false;
-      }
+    constructor(
+        private fb: FormBuilder,
+        private emailService: EmailService
+    ) {
+        this.rsvpForm = this.fb.group({
+            name: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            phone: ['', Validators.required],
+            attendance: ['', Validators.required],
+            plusOne: [false],
+            message: ['']
+        });
     }
-  }
+
+    ngOnInit(): void {}
+
+    async onSubmit(): Promise<void> {
+        if (this.rsvpForm.valid && !this.isSubmitting) {
+            this.isSubmitting = true;
+            
+            try {
+                await this.emailService.sendRSVP(this.rsvpForm.value);
+                this.showSuccess = true;
+                this.rsvpForm.reset();
+                setTimeout(() => {
+                    this.showSuccess = false;
+                }, 5000);
+            } catch (error) {
+                console.error('Error sending RSVP:', error);
+            } finally {
+                this.isSubmitting = false;
+            }
+        }
+    }
 }

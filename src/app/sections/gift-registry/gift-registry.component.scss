@@ -138,3 +138,75 @@
         }
     }
 }
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .gift-registry-container {
+    // Improve scrolling performance
+    -webkit-overflow-scrolling: touch;
+    
+    // Optimize registry items for touch
+    .registry-item {
+      touch-action: manipulation;
+      
+      // Prevent text selection
+      user-select: none;
+      -webkit-user-select: none;
+
+      // Optimize tap highlight
+      -webkit-tap-highlight-color: transparent;
+
+      // Adjust spacing for mobile
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+
+      // Add touch feedback
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+
+    // Optimize bank details for touch
+    .bank-details {
+      padding: 1rem;
+      
+      // Make copy buttons more touch-friendly
+      button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px;
+        touch-action: manipulation;
+        
+        // Add touch feedback
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  }
+
+  // Optimize animations
+  .animate-fade-in,
+  .animate-slide-up {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  // Adjust text for better readability
+  .registry-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .registry-description {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  // Optimize icons for mobile
+  .registry-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

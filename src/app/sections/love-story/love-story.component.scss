@@ -264,3 +264,65 @@
         animation-delay: 1s;
     }
 }
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .story-container {
+    // Improve scrolling performance
+    -webkit-overflow-scrolling: touch;
+    
+    // Optimize touch interactions
+    .story-item {
+      touch-action: pan-y pinch-zoom;
+      
+      // Prevent text selection while scrolling
+      user-select: none;
+      -webkit-user-select: none;
+
+      // Optimize tap highlight
+      -webkit-tap-highlight-color: transparent;
+
+      // Adjust spacing for mobile
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    // Optimize images for mobile
+    img {
+      -webkit-touch-callout: none;
+      pointer-events: none;
+    }
+  }
+
+  // Optimize animations
+  .animate-fade-in,
+  .animate-slide-up {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  // Add touch feedback for interactive elements
+  .touch-feedback {
+    transition: transform 0.1s ease;
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Adjust text sizes for better readability
+  .story-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .story-date {
+    font-size: 1rem;
+  }
+
+  .story-content {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+}

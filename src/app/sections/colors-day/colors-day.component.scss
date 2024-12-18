@@ -33,6 +33,17 @@
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 :host {
     display: block;
 
@@ -126,5 +137,67 @@
         opacity: 0;
         animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         animation-delay: 1s;
+    }
+
+    .text-center {
+        opacity: 0;
+        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .color-swatch {
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+}
+
+// Mobile optimizations
+@media (max-width: 768px) {
+    .colors-container {
+        // Improve scrolling performance
+        -webkit-overflow-scrolling: touch;
+        
+        // Optimize touch interactions
+        .color-swatch {
+            touch-action: manipulation;
+            
+            // Prevent text selection
+            user-select: none;
+            -webkit-user-select: none;
+
+            // Optimize tap highlight
+            -webkit-tap-highlight-color: transparent;
+
+            // Adjust spacing for mobile
+            padding: 1rem;
+            margin-bottom: 1rem;
+
+            // Add touch feedback
+            &:active {
+                transform: scale(0.98);
+            }
+        }
+    }
+
+    // Optimize animations
+    .animate-fade-in,
+    .animate-slide-up {
+        will-change: transform, opacity;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+    }
+
+    // Adjust text sizes for better readability
+    .text-xl {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    // Adjust grid layout for mobile
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
     }
 }

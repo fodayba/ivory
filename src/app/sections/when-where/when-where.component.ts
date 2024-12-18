@@ -6,10 +6,8 @@ interface Venue {
   time: string;
   location: string;
   address: string;
-  image: string;
   mapUrl: string;
-  description: string;
-  date: string;
+  image: string;
 }
 
 @Component({
@@ -26,20 +24,16 @@ export class WhenWhereComponent {
       time: '12:00 PM',
       location: 'Sacred Heart Cathedral',
       address: 'Siaka Stevens St, Freetown, Sierra Leone',
-      image: 'assets/images/venues/church.jpg',
-      mapUrl: 'https://maps.google.com',
-      description: 'Join us for our beautiful wedding ceremony at this historic cathedral.',
-      date: '19 DEC 2024'
+      mapUrl: 'https://maps.app.goo.gl/xRJSpGw13ZvKQg787',
+      image: 'assets/images/venues/church.jpg'
     },
     {
-      title: 'Reception & Party',
+      title: 'Wedding Reception',
       time: '6:00 PM',
-      location: 'Freetown International Conference Center',
-      address: 'Bintumani Hotel, Freetown, Sierra Leone',
-      image: 'assets/images/venues/reception.jpg',
-      mapUrl: 'https://maps.google.com',
-      description: 'Celebrate with us at this elegant venue as we begin our new journey together.',
-      date: '19 DEC 2024'
+      location: 'Bintumani International Conference Centre',
+      address: 'Aberdeen, Freetown, Sierra Leone',
+      mapUrl: 'https://maps.app.goo.gl/xg8ovQHGSQcgAbDF8',
+      image: 'assets/images/venues/reception.jpg'
     }
   ];
 }

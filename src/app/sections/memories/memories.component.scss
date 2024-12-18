@@ -202,3 +202,61 @@
         opacity: 1;
     }
 }
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .memories-container {
+    // Improve scrolling performance
+    -webkit-overflow-scrolling: touch;
+    
+    // Optimize grid for mobile
+    .memories-grid {
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    // Optimize memory items for touch
+    .memory-item {
+      touch-action: manipulation;
+      
+      // Prevent text selection
+      user-select: none;
+      -webkit-user-select: none;
+
+      // Optimize tap highlight
+      -webkit-tap-highlight-color: transparent;
+
+      // Adjust hover effects for touch
+      &:active {
+        transform: scale(0.98);
+      }
+
+      // Optimize images
+      img {
+        -webkit-touch-callout: none;
+        pointer-events: none;
+      }
+    }
+  }
+
+  // Optimize animations
+  .animate-fade-in,
+  .animate-slide-up {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  // Adjust text for better readability
+  .memory-caption {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  // Optimize shimmer effect for mobile
+  .shimmer-effect {
+    background-attachment: scroll;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+}

@@ -33,3 +33,49 @@
         }
     }
 }
+
+// Mobile optimizations
+@media (max-width: 768px) {
+  .countdown-container {
+    // Improve touch targets
+    .countdown-item {
+      min-width: 70px;
+      padding: 12px 8px;
+      touch-action: manipulation;
+
+      // Prevent text selection
+      user-select: none;
+      -webkit-user-select: none;
+
+      // Optimize tap highlight
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    // Adjust spacing for mobile
+    .countdown-number {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .countdown-label {
+      font-size: 0.875rem;
+    }
+  }
+
+  // Add touch feedback
+  .touch-feedback {
+    transition: transform 0.1s ease;
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Optimize animations
+  .animate-fade-in,
+  .animate-slide-up {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}

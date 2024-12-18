@@ -185,3 +185,70 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
   transform: translateY(0);
 }
+
+// Mobile and Touch Optimizations
+@media (max-width: 768px) {
+  html {
+    // Prevent overscroll bounce
+    overscroll-behavior: none;
+    
+    // Smooth scrolling
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    // Prevent text size adjustment
+    -webkit-text-size-adjust: 100%;
+    
+    // Prevent selection while scrolling
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  // Improve touch targets
+  button, 
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
+    touch-action: manipulation;
+  }
+
+  // Remove hover effects on mobile
+  .hover\:* {
+    @media (hover: none) {
+      &:hover {
+        all: unset;
+      }
+    }
+  }
+
+  // Add touch feedback
+  .touch-feedback {
+    transition: transform 0.1s ease;
+    
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // Optimize images
+  img {
+    -webkit-touch-callout: none;
+  }
+
+  // Optimize inputs
+  input, 
+  textarea, 
+  select {
+    font-size: 16px; // Prevent zoom on iOS
+  }
+}
+
+// Enable smooth scrolling only on devices that support it
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
