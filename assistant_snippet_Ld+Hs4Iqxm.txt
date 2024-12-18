@@ -1,1 +1,1 @@
-1|build_command: npm ci --legacy-peer-deps && npm run build -- --configuration production 
+1|build_command: npm ci --force && npm run build -- --configuration production 

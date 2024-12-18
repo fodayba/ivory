@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import emailjs from '@emailjs/browser';
-import { environment } from '../../../environments/environment';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-rsvp',
@@ -17,7 +16,10 @@ export class RsvpComponent implements OnInit {
   submitSuccess = false;
   submitError = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private emailService: EmailService
+  ) {
     this.rsvpForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -26,9 +28,6 @@ export class RsvpComponent implements OnInit {
       plusOne: [false],
       message: ['']
     });
-
-    // Initialize EmailJS
-    emailjs.init(environment.emailJs.publicKey);
   }
 
   ngOnInit(): void {
@@ -47,23 +46,7 @@ export class RsvpComponent implements OnInit {
       this.submitError = false;
 
       try {
-        const formData = this.rsvpForm.value;
-        const templateParams = {
-          to_email: environment.emailJs.toEmail,
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          attending: formData.attending ? 'Yes' : 'No',
-          plus_one: formData.plusOne ? 'Yes' : 'No',
-          message: formData.message || 'No message provided'
-        };
-
-        await emailjs.send(
-          environment.emailJs.serviceId,
-          environment.emailJs.templateId,
-          templateParams
-        );
-
+        await this.emailService.sendRSVP(this.rsvpForm.value);
         this.submitSuccess = true;
         this.rsvpForm.reset();
         
