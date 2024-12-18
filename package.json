@@ -7,7 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ivory-wed": "node dist/ivory-wed/server/server.mjs"
+    "serve:ssr:ivory-wed": "node dist/ivory-wed/server/server.mjs",
+    "build:ssr": "ng build && ng run ivory-wed:server",
+    "prerender": "ng run ivory-wed:prerender"
+
   },
   "private": true,
   "dependencies": {
