@@ -20,8 +20,8 @@ export class CountdownComponent implements OnInit, OnDestroy {
   public minutes: number = 0;
   public seconds: number = 0;
 
-  // Wedding date: December 19, 2024
-  private weddingDate: Date = new Date('2024-12-19T00:00:00');
+  // Wedding date: December 19, 2024 at 12:00 PM
+  private weddingDate: Date = new Date('2024-12-19T12:00:00');
 
   constructor(
     private cdr: ChangeDetectorRef,
