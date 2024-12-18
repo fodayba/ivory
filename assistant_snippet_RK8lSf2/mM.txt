@@ -1,0 +1,1 @@
+1|build_command: npm install -g npm@10 && npm ci --force && npm run build -- --configuration production 
