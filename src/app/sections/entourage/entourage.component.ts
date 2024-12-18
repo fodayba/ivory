@@ -21,42 +21,37 @@ export class EntourageComponent {
     {
       name: 'Michaela Sesay',
       role: 'Maid of Honor',
-      image: 'assets/images/entourage/bridesmaid-1.png'
-    },
-    {
-      name: 'Antoinette Sampson',
-      role: 'Bridesmaid',
-      image: 'assets/images/entourage/bridesmaid-2.png'
+      image: 'assets/images/entourage/bridesmaid-1.jpg'
     },
     {
       name: 'Bernadette Jarret',
       role: 'Bridesmaid',
-      image: 'assets/images/entourage/bridesmaid-3.png'
+      image: 'assets/images/entourage/bridesmaid-2.jpg'
     },
     {
       name: 'Janet Yomba',
       role: 'Bridesmaid',
-      image: 'assets/images/entourage/bridesmaid-4.png'
+      image: 'assets/images/entourage/bridesmaid-3.jpg'
     },
     {
       name: 'Mariama Bangura',
       role: 'Bridesmaid',
-      image: 'assets/images/entourage/bridesmaid-5.png'
+      image: 'assets/images/entourage/bridesmaid-4.jpg'
     },
     {
       name: 'Samira Wurie',
       role: 'Bridesmaid',
-      image: 'assets/images/entourage/bridesmaid-6.png'
+      image: 'assets/images/entourage/bridesmaid-5.jpg'
     },
     {
       name: 'Sia Lucy Gandi-Gborie',
       role: 'Bridesmaid',
-      image: 'assets/images/entourage/bridesmaid-7.png'
+      image: 'assets/images/entourage/bridesmaid-6.jpg'
     },
     {
       name: 'Tracy Godwin-Cole',
       role: 'Bridesmaid',
-      image: 'assets/images/entourage/bridesmaid-8.png'
+      image: 'assets/images/entourage/bridesmaid-7.png'
     }
   ];
 
