@@ -1,35 +1,42 @@
-<section class="py-24 bg-white">
-  <div class="container mx-auto px-4">
-    <!-- Section Title -->
-    <div class="text-center mb-16">
-      <h2 class="font-serif text-3xl md:text-4xl text-primary-900 mb-4">Colors of the Day</h2>
-      <div class="w-20 h-0.5 bg-primary-300 mx-auto"></div>
+<section class="py-32 relative overflow-hidden bg-gradient-to-b from-white via-primary-50/10 to-white">
+    <!-- Decorative Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-primary-100/30 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-100/30 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
     </div>
 
-    <!-- Color Swatches -->
-    <div class="max-w-4xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-        <div *ngFor="let color of colors" 
-             class="group relative aspect-square rounded-lg overflow-hidden shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300">
-          <!-- Color Swatch -->
-          <div class="absolute inset-0" [style.background-color]="color.hex"></div>
-          
-          <!-- Color Info Overlay -->
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300
-                      flex flex-col items-center justify-center text-white">
-            <p class="font-serif text-lg mb-2">{{color.name}}</p>
-            <p class="font-mono text-sm uppercase">{{color.hex}}</p>
-          </div>
+    <div class="container mx-auto px-4">
+        <!-- Section Title -->
+        <div class="text-center mb-20">
+            <h2 class="font-cursive text-6xl md:text-7xl text-primary-900 mb-6">Colours of Our Day</h2>
+            <div class="w-32 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent mx-auto"></div>
         </div>
-      </div>
 
-      <!-- Color Description -->
-      <div class="text-center mt-12">
-        <p class="text-lg text-primary-700 max-w-2xl mx-auto">
-          Our wedding colors reflect the elegance and romance of the celebration, 
-          featuring a stunning palette of purple hues from delicate lavender to deep royal purple.
-        </p>
-      </div>
+        <!-- Color Palette -->
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
+                <div *ngFor="let color of colors; let i = index" 
+                     class="color-card group relative aspect-square rounded-2xl overflow-hidden shadow-lg">
+                    <!-- Color Display -->
+                    <div class="absolute inset-0 transform transition-transform duration-700 group-hover:scale-110"
+                         [style.background-color]="color.hex"></div>
+                    
+                    <!-- Color Info Overlay -->
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 
+                                transition-opacity duration-300 flex flex-col items-center justify-center">
+                        <p class="font-cursive text-2xl text-white mb-2">{{color.name}}</p>                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="text-center mt-20">
+                <p class="text-xl text-primary-700 max-w-2xl mx-auto leading-relaxed">
+                    Our wedding palette draws inspiration from the enchanting world of purples, 
+                    from delicate lavender to deep royal hues. Each shade has been carefully 
+                    chosen to create a harmonious blend that symbolizes our love story.
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>

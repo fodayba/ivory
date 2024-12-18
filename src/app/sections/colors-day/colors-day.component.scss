@@ -1,0 +1,130 @@
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes floatBlur {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(20px, -20px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+:host {
+    display: block;
+
+    // Animate background blurs
+    .blur-3xl {
+        animation: floatBlur 10s ease-in-out infinite;
+
+        &:nth-child(2) {
+            animation-delay: -5s;
+        }
+    }
+
+    .color-card {
+        opacity: 0;
+        animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.15}s;
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                transparent 100%
+            );
+            transform: translateX(-100%) rotate(45deg);
+            z-index: 1;
+        }
+
+        &:hover {
+            &::before {
+                animation: shimmer 1s forwards;
+            }
+        }
+
+        // Enhanced shadow effect
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover::after {
+            opacity: 1;
+        }
+
+        // Color info overlay
+        .absolute.inset-0.bg-black\/40 {
+            backdrop-filter: blur(4px);
+        }
+
+        // Text animations
+        p {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            &:first-child {
+                transition-delay: 0.1s;
+            }
+
+            &:last-child {
+                transition-delay: 0.2s;
+            }
+        }
+
+        &:hover p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    // Description text animation
+    .text-xl {
+        opacity: 0;
+        animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation-delay: 1s;
+    }
+}

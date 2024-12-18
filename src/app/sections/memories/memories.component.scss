@@ -1,0 +1,204 @@
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes tiltHover {
+    0%, 100% {
+        transform: perspective(1000px) rotateX(0) rotateY(0);
+    }
+    33% {
+        transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+    }
+    66% {
+        transform: perspective(1000px) rotateX(-2deg) rotateY(2deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageFloat {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes photoReveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) rotate(var(--rotation));
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(var(--rotation));
+    }
+}
+
+:host {
+    display: block;
+
+    .memory-card {
+        animation: floatIn 0.8s ease-out forwards;
+        opacity: 0;
+
+        @for $i from 1 through 8 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.1}s;
+            }
+        }
+
+        &:hover {
+            animation: tiltHover 5s ease-in-out infinite;
+        }
+    }
+
+    // Year badge animation
+    .bg-white\/90 {
+        transform-origin: right;
+        animation: slideLeft 0.3s ease-out;
+    }
+
+    .memory-item {
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+
+        @for $i from 1 through 8 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.2}s;
+            }
+        }
+
+        .relative {
+            transition: all 0.5s ease;
+
+            &:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+
+                img {
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+        img {
+            transition: transform 0.7s ease;
+        }
+
+        .absolute {
+            background: linear-gradient(to top,
+                rgba(0, 0, 0, 0.9) 0%,
+                rgba(0, 0, 0, 0.7) 30%,
+                transparent 100%);
+        }
+    }
+
+    .photobook {
+        position: relative;
+        background: linear-gradient(to right, #fff 0%, #f8f5f0 49.9%, #fff 50.1%, #f8f5f0 100%);
+        box-shadow: 
+            0 1px 1px rgba(0,0,0,0.15),
+            0 2px 2px rgba(0,0,0,0.15),
+            0 4px 4px rgba(0,0,0,0.15),
+            0 8px 8px rgba(0,0,0,0.15);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: rgba(0,0,0,0.1);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .page {
+            animation: pageFloat 1s ease-out forwards;
+            opacity: 0;
+
+            &:first-child {
+                animation-delay: 0.3s;
+            }
+
+            &:last-child {
+                animation-delay: 0.6s;
+            }
+        }
+
+        .memory-item {
+            --rotation: -1deg;
+            opacity: 0;
+            animation: photoReveal 0.8s ease-out forwards;
+
+            &:nth-child(even) {
+                --rotation: 1deg;
+            }
+
+            @for $i from 1 through 8 {
+                &:nth-child(#{$i}) {
+                    animation-delay: #{0.2 + ($i * 0.15)}s;
+                }
+            }
+
+            .relative {
+                background: white;
+                padding: 12px;
+                box-shadow: 
+                    0 1px 1px rgba(0,0,0,0.11),
+                    0 2px 2px rgba(0,0,0,0.11),
+                    0 4px 4px rgba(0,0,0,0.11);
+                transition: all 0.4s ease;
+
+                &:hover {
+                    transform: translateY(-5px) rotate(0) !important;
+                    box-shadow: 
+                        0 2px 2px rgba(0,0,0,0.15),
+                        0 4px 4px rgba(0,0,0,0.15),
+                        0 8px 8px rgba(0,0,0,0.15);
+                }
+
+                img {
+                    transition: transform 0.4s ease;
+                    will-change: transform;
+                }
+
+                &:hover img {
+                    transform: scale(1.02);
+                }
+            }
+        }
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        transform: translateX(100%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}

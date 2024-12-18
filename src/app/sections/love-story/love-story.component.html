@@ -1,55 +1,114 @@
 <!-- Love Story Section -->
-<section class="py-24 bg-white">
-    <div class="container mx-auto px-4">
+<section class="py-32 relative overflow-hidden bg-gradient-to-b from-white via-primary-50/10 to-white">
+    <!-- Decorative Background Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-primary-100/30 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-100/30 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative">
         <!-- Title -->
-        <div class="text-center mb-16">
-            <h2 class="font-serif text-3xl md:text-4xl text-primary-900 mb-4">Our Love Story</h2>
-            <div class="w-20 h-0.5 bg-primary-300 mx-auto"></div>
+        <div class="text-center mb-24">
+            <h2 class="font-cursive text-6xl md:text-7xl text-primary-900 mb-6">Our Love Story</h2>
+            <div class="w-32 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent mx-auto"></div>
         </div>
 
-        <!-- Navigation Tabs -->
-        <div class="flex justify-center space-x-6 mb-16">
-            <button (click)="activeTab = 'met'"
-                    [class.border-primary-500]="activeTab === 'met'"
-                    [class.text-primary-900]="activeTab === 'met'"
-                    class="px-6 py-3 text-lg font-serif border-b-2 hover:text-primary-600">
-                How We Met
-            </button>
-            <button (click)="activeTab = 'date'"
-                    [class.border-primary-500]="activeTab === 'date'"
-                    [class.text-primary-900]="activeTab === 'date'"
-                    class="px-6 py-3 text-lg font-serif border-b-2 hover:text-primary-600">
-                Our First Date
-            </button>
-            <button (click)="activeTab = 'proposal'"
-                    [class.border-primary-500]="activeTab === 'proposal'"
-                    [class.text-primary-900]="activeTab === 'proposal'"
-                    class="px-6 py-3 text-lg font-serif border-b-2 hover:text-primary-600">
-                Marriage Proposal
-            </button>
-        </div>
+        <!-- Story Timeline -->
+        <div class="max-w-7xl mx-auto relative">
+            <!-- Timeline Line -->
+            <div class="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary-300 to-transparent"></div>
 
-        <!-- Content -->
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <!-- Image -->
-            <div class="relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg">
-                <div class="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
-                <img [src]="storyMoments[activeTab].image" 
-                     [alt]="storyMoments[activeTab].title"
-                     class="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105">
-            </div>
+            <!-- Story Moments -->
+            <div class="space-y-32">
+                <!-- How We Met -->
+                <div class="relative group" [class.active]="activeTab === 'met'">
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                        <!-- Image Side -->
+                        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl transform md:group-hover:scale-105 md:group-hover:-rotate-2 transition-all duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/40 to-transparent opacity-60"></div>
+                            <img [src]="storyMoments['met'].image" [alt]="storyMoments['met'].title" 
+                                 class="w-full h-full object-cover">
+                            <!-- Decorative Frame -->
+                            <div class="absolute inset-0 border-2 border-white/20 rounded-2xl transform scale-95"></div>
+                        </div>
 
-            <!-- Text -->
-            <div class="flex flex-col justify-center">
-                <div class="max-w-xl">
-                    <h3 class="font-serif text-2xl md:text-3xl text-primary-900 mb-6">
-                        {{storyMoments[activeTab].title}}
-                    </h3>
-                    <p class="text-lg text-primary-700 leading-relaxed">
-                        {{storyMoments[activeTab].content}}
-                    </p>
+                        <!-- Text Side -->
+                        <div class="relative text-center md:text-left md:ml-8">
+                            <!-- Decorative Number -->
+                            <span class="absolute -top-16 left-0 text-8xl font-cursive text-primary-100/20 select-none">01</span>
+                            <h3 class="font-cursive text-4xl md:text-5xl text-primary-800 mb-2">{{storyMoments['met'].title}}</h3>
+                            <div class="relative inline-block">
+                                <p class="text-sm tracking-[0.2em] text-primary-400 uppercase mb-6 transition-all duration-300 hover:tracking-[0.3em] hover:text-primary-600">
+                                    {{storyMoments['met'].date}}
+                                </p>
+                                <div class="absolute -bottom-2 left-0 w-full h-px bg-primary-200 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></div>
+                            </div>
+                            <p class="text-xl text-primary-600 leading-relaxed">{{storyMoments['met'].content}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- First Date -->
+                <div class="relative group" [class.active]="activeTab === 'date'">
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                        <!-- Text Side -->
+                        <div class="relative text-center md:text-right md:mr-8 md:order-1">
+                            <!-- Decorative Number -->
+                            <span class="absolute -top-16 right-0 text-8xl font-cursive text-primary-100/20 select-none">02</span>
+                            <h3 class="font-cursive text-4xl md:text-5xl text-primary-800 mb-2">{{storyMoments['date'].title}}</h3>
+                            <div class="relative inline-block">
+                                <p class="text-sm tracking-[0.2em] text-primary-400 uppercase mb-6 transition-all duration-300 hover:tracking-[0.3em] hover:text-primary-600">
+                                    {{storyMoments['date'].date}}
+                                </p>
+                                <div class="absolute -bottom-2 left-0 w-full h-px bg-primary-200 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></div>
+                            </div>
+                            <p class="text-xl text-primary-600 leading-relaxed">{{storyMoments['date'].content}}</p>
+                        </div>
+
+                        <!-- Image Side -->
+                        <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl transform md:group-hover:scale-105 md:group-hover:rotate-2 transition-all duration-700 md:order-2">
+                            <div class="absolute inset-0 bg-gradient-to-tl from-primary-900/40 to-transparent opacity-60"></div>
+                            <img [src]="storyMoments['date'].image" [alt]="storyMoments['date'].title" 
+                                 class="w-full h-full object-cover">
+                            <!-- Decorative Frame -->
+                            <div class="absolute inset-0 border-2 border-white/20 rounded-2xl transform scale-95"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proposal -->
+                <div class="relative group" [class.active]="activeTab === 'proposal'">
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                        <!-- Image Side -->
+                        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl transform md:group-hover:scale-105 md:group-hover:-rotate-2 transition-all duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-primary-900/40 to-transparent opacity-60"></div>
+                            <img [src]="storyMoments['proposal'].image" [alt]="storyMoments['proposal'].title" 
+                                 class="w-full h-full object-cover">
+                            <!-- Decorative Frame -->
+                            <div class="absolute inset-0 border-2 border-white/20 rounded-2xl transform scale-95"></div>
+                        </div>
+
+                        <!-- Text Side -->
+                        <div class="relative text-center md:text-left md:ml-8">
+                            <!-- Decorative Number -->
+                            <span class="absolute -top-16 left-0 text-8xl font-cursive text-primary-100/20 select-none">03</span>
+                            <h3 class="font-cursive text-4xl md:text-5xl text-primary-800 mb-2">{{storyMoments['proposal'].title}}</h3>
+                            <div class="relative inline-block">
+                                <p class="text-sm tracking-[0.2em] text-primary-400 uppercase mb-6 transition-all duration-300 hover:tracking-[0.3em] hover:text-primary-600">
+                                    {{storyMoments['proposal'].date}}
+                                </p>
+                                <div class="absolute -bottom-2 left-0 w-full h-px bg-primary-200 transform origin-left transition-transform duration-300 scale-x-0 group-hover:scale-x-100"></div>
+                            </div>
+                            <p class="text-xl text-primary-600 leading-relaxed">{{storyMoments['proposal'].content}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Timeline Dots -->
+            <div class="absolute left-1/2 top-[25%] transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary-200 border-4 border-white shadow-lg"></div>
+            <div class="absolute left-1/2 top-[58%] transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary-200 border-4 border-white shadow-lg"></div>
+            <div class="absolute left-1/2 top-[91%] transform -translate-x-1/2 w-4 h-4 rounded-full bg-primary-200 border-4 border-white shadow-lg"></div>
         </div>
     </div>
 </section>

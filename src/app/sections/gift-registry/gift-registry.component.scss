@@ -1,0 +1,140 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatBlur {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(20px, -20px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity: 0.3;
+    }
+}
+
+@keyframes giftBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+:host {
+    display: block;
+
+    // Animate background blurs
+    .blur-3xl {
+        animation: floatBlur 10s ease-in-out infinite;
+
+        &:nth-child(2) {
+            animation-delay: -5s;
+        }
+    }
+
+    // Title animation
+    .text-6xl {
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    // Main message animations
+    .text-2xl, .text-xl {
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .text-2xl {
+        animation-delay: 0.3s;
+    }
+
+    .text-xl {
+        animation-delay: 0.5s;
+    }
+
+    // Bank details card animations
+    .bg-white {
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+        animation-delay: 0.7s;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        // Gift icon animation
+        .fa-gift {
+            animation: giftBounce 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        // Bank details shimmer effect
+        .space-y-4 p {
+            position: relative;
+            overflow: hidden;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(190, 42, 237, 0.05),
+                    transparent
+                );
+                background-size: 200% 100%;
+                animation: shimmer 3s infinite linear;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            &:hover::after {
+                opacity: 1;
+            }
+        }
+    }
+
+    // Note animation
+    .italic {
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+        animation-delay: 0.9s;
+    }
+
+    // Blur elements animation
+    .blur-2xl {
+        animation: floatBlur 8s ease-in-out infinite;
+
+        &:nth-child(2) {
+            animation-delay: -4s;
+        }
+    }
+}

@@ -1,52 +1,56 @@
-<section class="py-24 bg-primary-900 text-white relative overflow-hidden">
+<section class="py-24 bg-gradient-to-b from-primary-900 to-primary-800 text-white relative overflow-hidden">
     <!-- Background Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40"></div>
+    <div class="absolute inset-0 bg-black/30"></div>
     
     <div class="container mx-auto px-4 relative z-10">
         <!-- Section Title -->
-        <div class="text-center mb-12">
-            <h2 class="font-serif text-3xl md:text-4xl mb-4">Counting Down To</h2>
-            <p class="text-lg md:text-xl font-light tracking-wider">The Big Day</p>
+        <div class="text-center mb-16">
+            <h2 class="font-cursive text-5xl md:text-6xl mb-4">Counting Down To</h2>
+            <p class="font-display text-xl tracking-wider text-primary-200">The Big Day</p>
         </div>
 
         <!-- Countdown Timer -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 max-w-4xl mx-auto">
             <!-- Days -->
             <div class="text-center">
-                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 md:p-6 shadow-lg min-h-[120px] flex flex-col items-center justify-center">
-                    <span class="block font-serif text-4xl md:text-5xl mb-2">{{padNumber(days)}}</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider text-primary-200">Days</span>
+                <div class="bg-white/5 backdrop-blur rounded-2xl p-6 md:p-8">
+                    <span class="block font-cursive text-5xl md:text-6xl mb-2">{{padNumber(days)}}</span>
+                    <span class="font-display uppercase tracking-[0.2em] text-primary-200">Days</span>
                 </div>
             </div>
 
             <!-- Hours -->
             <div class="text-center">
-                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 md:p-6 shadow-lg min-h-[120px] flex flex-col items-center justify-center">
-                    <span class="block font-serif text-4xl md:text-5xl mb-2">{{padNumber(hours)}}</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider text-primary-200">Hours</span>
+                <div class="bg-white/5 backdrop-blur rounded-2xl p-6 md:p-8">
+                    <span class="block font-cursive text-5xl md:text-6xl mb-2">{{padNumber(hours)}}</span>
+                    <span class="font-display uppercase tracking-[0.2em] text-primary-200">Hours</span>
                 </div>
             </div>
 
             <!-- Minutes -->
             <div class="text-center">
-                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 md:p-6 shadow-lg min-h-[120px] flex flex-col items-center justify-center">
-                    <span class="block font-serif text-4xl md:text-5xl mb-2">{{padNumber(minutes)}}</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider text-primary-200">Minutes</span>
+                <div class="bg-white/5 backdrop-blur rounded-2xl p-6 md:p-8">
+                    <span class="block font-cursive text-5xl md:text-6xl mb-2">{{padNumber(minutes)}}</span>
+                    <span class="font-display uppercase tracking-[0.2em] text-primary-200">Minutes</span>
                 </div>
             </div>
 
             <!-- Seconds -->
             <div class="text-center">
-                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 md:p-6 shadow-lg min-h-[120px] flex flex-col items-center justify-center">
-                    <span class="block font-serif text-4xl md:text-5xl mb-2">{{padNumber(seconds)}}</span>
-                    <span class="text-sm md:text-base uppercase tracking-wider text-primary-200">Seconds</span>
+                <div class="bg-white/5 backdrop-blur rounded-2xl p-6 md:p-8">
+                    <span class="block font-cursive text-5xl md:text-6xl mb-2">{{padNumber(seconds)}}</span>
+                    <span class="font-display uppercase tracking-[0.2em] text-primary-200">Seconds</span>
                 </div>
             </div>
         </div>
 
         <!-- Wedding Date -->
-        <div class="text-center mt-12">
-            <p class="text-xl md:text-2xl font-serif">December 19, 2024</p>
+        <div class="text-center mt-16">
+            <div class="inline-block border border-white/10 px-12 py-4 rounded-full">
+                <p class="font-display text-xl tracking-[0.2em] text-primary-100">
+                    DECEMBER 19, 2024
+                </p>
+            </div>
         </div>
     </div>
 </section>
